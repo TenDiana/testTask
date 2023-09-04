@@ -58,12 +58,11 @@ const ComplexHistogram = () => {
         </div>
         <div className='data-bar'>
           {data?.map(([item, value], index) => (
-            <div className='bar-group' >
+            <div key={index} className='bar-group' >
               <div
                 className="bar"
                 style={{ height: `${value * HEIGHT_MULTIPLIER}px` }}
                 data-value={value}
-                key={index}
               />
               {selectedOption === 'month' ?
                 (
