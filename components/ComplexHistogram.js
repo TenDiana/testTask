@@ -46,8 +46,9 @@ const ComplexHistogram = () => {
       </select>
       <div className='histogram'>
         <div className='y-axis-bars'>
-          {MAX_VALUES.map((item) => (
+          {MAX_VALUES.map((item, index) => (
             <div
+              key={index}
               className="y-axis-bar"
               style={{ height: `${item * HEIGHT_MULTIPLIER}px` }}
             >
@@ -56,9 +57,14 @@ const ComplexHistogram = () => {
           ))}
         </div>
         <div className='data-bar'>
-          {data?.map(([item, value]) => (
+          {data?.map(([item, value], index) => (
             <div className='bar-group' >
-              <div className="bar" style={{ height: `${value * HEIGHT_MULTIPLIER}px` }} data-value={value} />
+              <div
+                className="bar"
+                style={{ height: `${value * HEIGHT_MULTIPLIER}px` }}
+                data-value={value}
+                key={index}
+              />
               {selectedOption === 'month' ?
                 (
                 item % 5 === 0 || item === '1' ? (
